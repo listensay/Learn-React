@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!-- React 核心 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <!-- 编译JSX代码 -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector('#root'))
+
+    let message = 'Hello World'
+
+    function changeMessage() {
+      message = 'Hello, React'
+      reactRender()
+    }
+
+    reactRender()
+
+    // 封装一个渲染函数
+    function reactRender() {
+      root.render((
+        <div>
+          <h1>{message}</h1>
+          <button onClick={changeMessage}>change</button>
+        </div>
+      ))
+    }
+  </script>
+
+</body>
+
+</html>
