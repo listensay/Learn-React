@@ -46,13 +46,21 @@
         this.state = {
           message: 'Hello World'
         }
+
+        this.btnClick = this.btnClick.bind(this)
+      }
+
+      btnClick() {
+        this.setState({
+          message: 'Hello React'
+        })
       }
 
       render() {
         return (
           <div>
             <h1>{this.state.message}</h1>
-            <button>change</button>
+            <button onClick={this.btnClick}>change</button>
           </div>
         )
       }
