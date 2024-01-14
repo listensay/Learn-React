@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello React案例</title>
+</head>
+
+<body>
+  <!-- react根节点 -->
+  <div id="root"></div>
+
+  <!-- 引入React CDN -->
+  <script src="../../lib/react.js"></script>
+  <script src="../../lib/react-dom.js"></script>
+  <!-- 引入Babel 编译JSX代码 -->
+  <script src="../../lib/babel.js"></script>
+
+  <!-- 编写React代码 -->
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector('#root'))
+
+    class App extends React.Component {
+      constructor() {
+        super()
+        this.state = {
+          message: 'Hello World'
+        }
+
+        this.changeMessage = this.changeMessage.bind(this)
+      }
+
+      changeMessage() {
+        this.setState({
+          message: 'Hello React'
+        })
+      }
+
+      render() {
+        return (
+          <div>
+            <h2>{this.state.message}</h2>
+            <button onClick={this.changeMessage}>修改内容</button>
+          </div>
+        )
+      }
+    }
+
+    root.render(<App />)
+  </script>
+</body>
+
+</html>
