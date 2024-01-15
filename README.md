@@ -1,3 +1,3 @@
-# Learn-React
+# 邂逅React
 
-Coderwhy React 学习过程
+记录 Coderwhy React 学习过程
