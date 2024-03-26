@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- React根元素 -->
+    <div id="root"></div>
+
+    <script src="../../lib/react.js"></script>
+    <script src="../../lib/react-dom.js"></script>
+    <script src="../../lib/babel.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super()
+
+                this.state = {
+                    message: 'Hello React',
+
+                    title: '哈哈哈哈哈',
+                    imgURL: 'https://www.shutterstock.com/shutterstock/photos/2363394461/display_1500/stock-photo-a-cute-chinese-giant-panda-climbing-on-a-wooden-pile-minimalist-photography-2363394461.jpg',
+                    href: 'https://google.com/'
+                }
+            }
+
+            render() {
+                const { title, imgURL, href } = this.state
+
+                const isActive = false
+                const className = ['abc cba']
+
+                const className2 = ['abc cba']
+                if(isActive) className2.push('active')
+
+                return (
+                    <div>
+                        <h1>{this.state.message}</h1>
+
+                        { /* 属性基本绑定 */ }
+                        <h2 title={title}>哈哈哈哈</h2>
+                        <img src={imgURL} alt="熊猫" />
+                        <div>
+                            <a href={href}>Google</a>
+                        </div>
+
+                        { /* 绑定clsss属性 className */ }
+                        <div className="abc cba">ABC CBA</div>
+                        <div className={className}>ABC CBA</div>
+                        <div className={className2.join(' ')}>ABC CBA active</div>
+                        { /* 绑定style属性 */ }
+                        <div style={{ fontSize: '30px', color: 'red' }}>哈哈哈哈哈哈哈哈哈哈</div>
+                    </div>
+                )
+            }
+        }
+
+        const root = ReactDOM.createRoot(document.querySelector('#root'))
+        root.render(<App />)
+    </script>
+
+</body>
+</html>

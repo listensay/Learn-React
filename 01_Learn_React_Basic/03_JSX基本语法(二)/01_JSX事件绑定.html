@@ -23,15 +23,33 @@
         super()
 
         this.state = {
-          message: 'Hello React'
+          message: 'Hello React',
+          counter: 1000,
         }
       }
 
+      decreatement() {
+        this.setState({
+          counter: this.state.counter - 1
+        })
+      }
+
+      increment() {
+        this.setState({
+          counter: this.state.counter + 1
+        })
+      }
+      
 
       render() {
+        const { counter } = this.state
+        
         return (
           <div>
             <h1>{this.state.message}</h1>
+            <h2>{ counter }</h2>
+            <button onClick={() => this.increment()}>Increment</button>
+            <button onClick={() => this.decreatement()}>Decrement</button>
           </div>
         )
       }
