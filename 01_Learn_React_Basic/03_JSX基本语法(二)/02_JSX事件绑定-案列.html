@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script src="../../lib/react.js"></script>
+  <script src="../../lib/react-dom.js"></script>
+  <script src="../../lib/babel.js"></script>
+
+  <script type="text/babel">
+    // 创建APP组件
+    class App extends React.Component {
+
+      constructor() {
+        super()
+
+        this.state = {
+          message: 'Hello React',
+
+          currentIndex: 0,
+          movies: ['星际穿越', '大话西游', '阿甘正传', '海上钢琴师']
+        }
+      }
+
+
+      render() {
+        const { message, movies } = this.state
+
+        const lisHandle = (item, index) => {
+
+          // 切换active位置
+          const changeIndex = () => {
+            this.setState({
+              currentIndex: index
+            })
+          }
+          
+          return (
+            <li key={index} className={ index === this.state.currentIndex ? 'active' : '' } onClick={changeIndex}>{item}</li>
+          )
+        }
+        
+        return (
+          <div>
+            <h1>{message}</h1>
+            
+            <ul>
+              {movies.map(lisHandle)}
+            </ul>
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector('#root'))
+    root.render(<App />)
+  </script>
+
+</body>
+
+</html>

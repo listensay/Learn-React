@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script src="../../lib/react.js"></script>
+  <script src="../../lib/react-dom.js"></script>
+  <script src="../../lib/babel.js"></script>
+
+  <script type="text/babel">
+    // 创建APP组件
+    class App extends React.Component {
+
+      constructor() {
+        super()
+
+        this.state = {
+          message: 'Hello React',
+
+          isShow: true
+        }
+      }
+
+      buttonActive = () => {
+        this.setState({
+          isShow: !this.state.isShow
+        })
+      }
+
+      render() {
+        const { message, isShow } = this.state
+        
+        return (
+          <div>
+            <h1>{message}</h1>
+
+            <button onClick={() => this.buttonActive()}>切换</button>
+            
+            {/* 模拟Vue v-if 方法 */}
+            { isShow && <div>哈哈哈哈哈哈</div>}
+
+            {/* 模拟Vue v-show 方法 */}
+            <div style={{display: isShow ? 'block' : 'none' }}>哈哈哈哈哈哈</div>
+
+          </div>
+        )
+      }
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector('#root'))
+    root.render(<App />)
+  </script>
+
+</body>
+
+</html>
